@@ -1,0 +1,72 @@
+{
+  "_stats": {
+    "generatedAt": "2026-10-31T08:29:15.431Z",
+    "ecosystemMax": "6.4.2",
+    "packageCount": 13
+  },
+  "@flun/desktop-builder": {
+    "version": "6.4.2",
+    "desc": "将任意 Node.js 网站一键打包为当前桌面应用('win', 'mac', 'linux')(基于 Electron),支持高度自定义配置;",
+    "install": "npm i @flun/desktop-builder"
+  },
+  "@flun/dns-auto-ssl": {
+    "version": "2.0.0",
+    "desc": "自动通过 DNS API 申请 SSL 证书并配置自动续期 (基于 lego v5)",
+    "install": "npm i @flun/dns-auto-ssl"
+  },
+  "@flun/env": {
+    "version": "3.2.0",
+    "desc": "A simple package to read .env environment files",
+    "install": "npm i @flun/env"
+  },
+  "@flun/html-template": {
+    "version": "5.1.14",
+    "desc": "一个HTML模板工具包,提供开发服务器和模板编译功能,支持自定义标签和快捷输入,变量定义,包含文件引用,帮助开发者模块化处理HTML;",
+    "install": "npm i @flun/html-template"
+  },
+  "@flun/mailer": {
+    "version": "2.1.25",
+    "desc": "Node.js 邮件发送库;支持 SMTP、SMTP Pool、Sendmail、Stream、JSON、SES 多种传输;",
+    "install": "npm i @flun/mailer"
+  },
+  "@flun/node-mobile-app": {
+    "version": "4.0.8",
+    "desc": "将 Node.js 项目一键打包为 Android / iOS 移动应用,运行时由 @flun/nodejs-mobile-react-native 提供;",
+    "install": "npm i @flun/node-mobile-app"
+  },
+  "@flun/nodejs-mobile-gyp": {
+    "version": "1.1.4",
+    "desc": "Node.js for Mobile Apps native addon build tool (flun fork)",
+    "install": "npm i @flun/nodejs-mobile-gyp"
+  },
+  "@flun/nodejs-mobile-react-native": {
+    "version": "2.1.1",
+    "desc": "Node.js for Mobile Apps React Native plugin (flun fork, based on nodejs-mobile-react-native)",
+    "install": "npm i @flun/nodejs-mobile-react-native"
+  },
+  "@flun/passport-desktop-win32-ia32-msvc": {
+    "version": "1.0.8",
+    "desc": "passport-desktop 的 Windows 32 位平台二进制包(win32-ia32-msvc);",
+    "install": "npm i @flun/passport-desktop-win32-ia32-msvc"
+  },
+  "@flun/passport-desktop-win32-x64-msvc": {
+    "version": "1.0.8",
+    "desc": "passport-desktop 的 Windows 64 位平台二进制包(win32-x64-msvc);",
+    "install": "npm i @flun/passport-desktop-win32-x64-msvc"
+  },
+  "@flun/webauthn-browser": {
+    "version": "2.1.10",
+    "desc": "WebAuthn 前端库,提供简单易用的接口来处理 WebAuthn 认证流程,支持 Passkeys 和 FIDO2 标准;",
+    "install": "npm i @flun/webauthn-browser"
+  },
+  "@flun/webauthn-server": {
+    "version": "2.1.10",
+    "desc": "Node.js 端 WebAuthn/Passkey 服务端库;提供 TypeScript 实现与证书、密钥、CBOR 编码处理;",
+    "install": "npm i @flun/webauthn-server"
+  },
+  "@flun/windows": {
+    "version": "3.0.11",
+    "desc": "支持 Windows 服务、事件日志、UAC 以及多种与操作系统交互的辅助方法",
+    "install": "npm i @flun/windows"
+  }
+}

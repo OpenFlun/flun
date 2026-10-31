@@ -1,0 +1,59 @@
+{
+  "name": "@flun/flun",
+  "version": "6.2.3",
+  "description": "Flun 生态包索引:列出全部官方包、查看用途与用法、一键打开文档;",
+  "type": "module",
+  "types": "index.d.ts",
+  "exports": {
+    ".": "./index.js"
+  },
+  "main": "index.js",
+  "bin": {
+    "flun": "cli.js"
+  },
+  "scripts": {
+    "build:index": "node scripts/build-index.js"
+  },
+  "keywords": [
+    "flun",
+    "flun-ecosystem",
+    "flun-cli",
+    "flun help",
+    "ecosystem-index",
+    "package-index",
+    "package-list",
+    "cli"
+  ],
+  "files": [
+    "cli.js",
+    "flun.js",
+    "index.d.ts",
+    "index.js",
+    "net.js",
+    "LICENSE",
+    "packages.json",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "author": "flun <open@flun.top>",
+  "dependencies": {
+    "chalk": "^6.0.1"
+  },
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10.0.0"
+  },
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenFlun/flun.git"
+  },
+  "gitee": "https://gitee.com/OpenFlun/flun.git",
+  "homepage": "https://github.com/OpenFlun/flun#readme",
+  "bugs": {
+    "url": "https://github.com/OpenFlun/flun/issues"
+  }
+}
