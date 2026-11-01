@@ -132,13 +132,13 @@ const GOLD = '#B8860B',
   checkSelfUpdate = async refresh => {
     try {
       const self = JSON.parse(fs.readFileSync(new URL('./package.json', import.meta.url), 'utf8')).version,
-        { data, online } = await resolveLatest(['@flun/flun'], refresh), latest = data['@flun/flun'];
+        M = '@flun/flun', { data, online } = await resolveLatest([M], refresh), latest = data[M];
       if (!online || !latest || latest === self) return;
       const x = latest.split('.').map(Number), y = self.split('.').map(Number);
       for (let i = 0; i < 3; i++) {
         if ((x[i] || 0) !== (y[i] || 0)) {
-          if ((x[i] || 0) > (y[i] || 0)) console.log('\n  ' + chalk.blueBright('当前包有新版:') + chalk.hex(GOLD)(latest)
-            + chalk.gray(',更新: npm i -g @flun/flun'));
+          if ((x[i] || 0) > (y[i] || 0)) console.log('\n  ' + chalk.blueBright(`${M}有新版:`) + chalk.hex(GOLD)(latest)
+            + chalk.gray(`,更新: npm i -g ${M}`) + '\n');
           return;
         }
       }
