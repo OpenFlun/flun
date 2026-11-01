@@ -73,16 +73,16 @@ const GOLD = '#B8860B',
   },
   printHelp = () => console.log(`用法: flun <命令> [选项]
 
-命令:
-  pkg                列出全部包,按已装/未装分组
-  search <关键字>    按包名、描述中的关键字搜索
-  info <包名>        查看单包详情;已装打开本地 README,未装打开 npm 页面
-  stats              输出收录包时间、数量与最高版本
+  命令:
+    pkgs              列出全部包(按已装/未装分组)
+    search <关键字>   按包名、描述中的关键字搜索
+    info <包名>       查看单包详情(已装打开本地 README,未装打开 npm 页面)
+    stats             输出收录包时间、数量与最高版本
 
-选项:
-  -r, --refresh      重新查询 npm 最新版本,忽略 1 小时缓存;仅对 pkg 与 info 生效
+  选项:
+    -r, --refresh     重新查询 npm 最新版本(忽略 1 小时缓存,仅对 pkgs 与 info 生效)
 
-无参数、help、-h、--help 输出本帮助;`),
+  无参数、help、-h、--help 输出本帮助。`),
   printList = async refresh => {
     const rows = list(), { data: latest, online } = await resolveLatest(rows.map(r => r.name), refresh),
       width = Math.max(...rows.map(r => r.name.length)), groups = [[], []];
@@ -103,7 +103,7 @@ const GOLD = '#B8860B',
   },
   printInfo = async (name, refresh) => {
     const pkg = info(name);
-    if (!pkg) console.error(chalk.yellow('✗ 未找到相关包,如果你想查看所有包,请运行 flun pkg\n')), process.exit(1);
+    if (!pkg) console.error(chalk.yellow('✗ 未找到相关包,如果你想查看所有包,请运行 flun pkgs\n')), process.exit(1);
 
     const { data: latest, online } = await resolveLatest([name], refresh),
       ver = formatVer(readLocalVersion(name), latest[name], pkg.version, online);
@@ -146,7 +146,7 @@ const GOLD = '#B8860B',
   rest = raw.filter(a => a !== '--refresh' && a !== '-r'), [cmd, ...args] = rest;
 
 if (!cmd || cmd === 'help' || cmd === '-h' || cmd === '--help') printHelp(), process.exit(0);
-else if (cmd === 'pkg') await printList(refresh);
+else if (cmd === 'pkgs') await printList(refresh);
 else if (cmd === 'search') {
   if (!args.length) { console.error(chalk.cyan('用法: flun search <关键字>')), process.exit(1); }
   printSearch(args.join(' '));
