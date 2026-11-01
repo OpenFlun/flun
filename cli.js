@@ -110,7 +110,8 @@ const GOLD = '#B8860B',
       ver = formatVer(readLocalVersion(name), latest[name], pkg.version, online);
 
     console.log(chalk.blueBright(`\n${pkg.name}`)), console.log(chalk.dim(`  ${pkg.desc || '(无描述)'}`));
-    console.log(chalk.gray(`  安装: ${pkg.install}`)), console.log(chalk.cyan('  版本: ') + styleVer(ver));
+    console.log(chalk.cyan('  安装: ') + chalk.gray(pkg.install)),
+      console.log(chalk.cyan('  版本: ') + (ver.includes(' → ') ? styleVer(ver) : chalk.hex(GOLD)(ver)));
     console.log(''), openReadme(name, pkg);
   },
   printStats = () => {
