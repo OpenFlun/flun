@@ -6,7 +6,7 @@ import chalk from 'chalk';
 const __dirname = path.dirname(fileURLToPath(import.meta.url)), root = path.resolve(__dirname, '..'),
   pkgRoot = path.resolve(root, '..'), indexPath = path.join(root, 'packages.json'),
   expectMajor = process.argv.includes('--expect-major') ? 1 : 0,
-  scanPkgs = () => fs.readdirSync(pkgRoot, { withFileTypes: true }).filter(d => d.isDirectory() && d.name !== 'help')
+  scanPkgs = () => fs.readdirSync(pkgRoot, { withFileTypes: true }).filter(d => d.isDirectory() && d.name !== 'flun')
     .map(d => {
       const pj = path.join(pkgRoot, d.name, 'package.json');
       if (!fs.existsSync(pj)) return null;

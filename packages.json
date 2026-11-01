@@ -1,8 +1,8 @@
 {
   "_stats": {
-    "generatedAt": "2026-11-01T03:10:06.398Z",
-    "ecosystemMax": "7.0.0",
-    "packageCount": 14
+    "generatedAt": "2026-11-01T03:47:22.417Z",
+    "ecosystemMax": "6.4.2",
+    "packageCount": 13
   },
   "@flun/desktop-builder": {
     "version": "6.4.2",
@@ -18,11 +18,6 @@
     "version": "3.2.0",
     "desc": "A simple package to read .env environment files",
     "install": "npm i @flun/env"
-  },
-  "@flun/flun": {
-    "version": "7.0.0",
-    "desc": "Flun 生态包索引:列出全部官方包、查看用途与用法、一键打开文档;",
-    "install": "npm i @flun/flun"
   },
   "@flun/html-template": {
     "version": "5.1.14",
