@@ -18,7 +18,8 @@ const GOLD = '#B8860B',
   },
   styleVer = ver => {
     const [l, r] = ver.split(' → ');
-    return r ? chalk.gray(`${l} → `) + chalk.hex(GOLD)(r) + chalk.greenBright(' (最新)') : chalk.cyan(ver);
+    if (r) return chalk.blue(`${l} → `) + chalk.green(r) + chalk.greenBright(' (最新)');
+    return /^(未安装|.*\(内部记录版本)/.test(ver) ? chalk.blue(ver) : chalk.cyan(ver);
   },
   findLocal = name => {
     let dir = process.cwd();
@@ -91,11 +92,11 @@ const GOLD = '#B8860B',
     console.log(chalk.green(`\n@flun 官方包列表${online ? '' : ' (离线)'}:\n`));
     for (const [i, title] of [[0, '已装'], [1, '未装']]) {
       if (!groups[i].length) continue;
-      console.log(chalk.cyanBright(`  ${title} (${groups[i].length}):`));
+      console.log((i === 0 ? chalk.cyan : chalk.blue)(`  ${title} (${groups[i].length}):`));
       for (const r of groups[i]) {
         const ver = formatVer(readLocalVersion(r.name), latest[r.name], r.version, online);
         console.log(`    ${chalk.cyanBright(padWidth(r.name, width))}  ${styleVer(ver)}`);
-        console.log('      ' + chalk.gray(r.desc || '(无描述)'));
+        console.log('      ' + chalk.dim(r.desc || '(无描述)'));
       }
       console.log('');
     }
@@ -108,7 +109,7 @@ const GOLD = '#B8860B',
     const { data: latest, online } = await resolveLatest([name], refresh),
       ver = formatVer(readLocalVersion(name), latest[name], pkg.version, online);
 
-    console.log(chalk.blueBright(`\n${pkg.name}`)), console.log(chalk.gray(`  ${pkg.desc || '(无描述)'}`));
+    console.log(chalk.blueBright(`\n${pkg.name}`)), console.log(chalk.dim(`  ${pkg.desc || '(无描述)'}`));
     console.log(chalk.gray(`  安装: ${pkg.install}`)), console.log(chalk.cyan('  版本: ') + styleVer(ver));
     console.log(''), openReadme(name, pkg);
   },
