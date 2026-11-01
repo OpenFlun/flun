@@ -42,9 +42,8 @@ const GOLD = '#B8860B',
       if (!local) return `未安装 → ${latest}`;
       if (!latest || latest === local) return local;
       const a = local.split('.').map(Number), b = latest.split('.').map(Number);
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 3; i++)
         if ((a[i] || 0) !== (b[i] || 0)) return (a[i] || 0) > (b[i] || 0) ? local : `${local} → ${latest}`;
-      }
       return local;
     }
     if (!local) return indexVer ? `未安装 (内部记录版本: ${indexVer})` : '未安装';
