@@ -1,6 +1,6 @@
 {
   "name": "@flun/flun",
-  "version": "8.0.3",
+  "version": "8.0.4",
   "description": "Flun 生态包索引:列出全部官方包、查看用途与用法、一键打开文档;",
   "type": "module",
   "types": "index.d.ts",
