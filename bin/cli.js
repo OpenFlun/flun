@@ -3,8 +3,8 @@ import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 import chalk from 'chalk';
-import { list, info, search, stats } from './index.js';
-import { resolveLatest } from './net.js';
+import { list, info, search, stats } from '../index.js';
+import { resolveLatest } from '../net.js';
 
 const GOLD = '#B8860B',
   dispWidth = s => {
@@ -61,29 +61,32 @@ const GOLD = '#B8860B',
     if (dir) {
       const readme = path.join(dir, 'README.md');
       if (fs.existsSync(readme)) {
-        console.log(chalk.cyan('📖 打开本地文档: ') + chalk.gray(readme));
+        console.log(chalk.cyan('打开本地文档: ') + chalk.gray(readme));
         execSync(`start "" "${readme}"`, { shell: true, stdio: 'ignore' });
         return;
       }
-      return console.log(chalk.yellow(`⚠️ ${name} 已安装但缺少 README.md`));
+      return console.log(chalk.yellow('⚠ ') + ` 已安装但缺少 README.md`);
     }
     const url = `https://www.npmjs.com/package/${name}`;
-    console.log(chalk.yellow(`📦 ${name} 未安装`)), console.log(chalk.gray(`   安装: ${pkg.install}`));
+    console.log(chalk.yellow('· ') + ` 未安装`), console.log(chalk.gray(`   安装: ${pkg.install}`));
     console.log(chalk.gray(`   在线文档: ${url}`));
     execSync(`start "" "${url}"`, { shell: true, stdio: 'ignore' });
   },
-  printHelp = () => console.log(`用法: flun <命令> [选项]
-
-  命令:
-    pkgs              列出全部包(按已装/未装分组)
-    search <关键字>   按包名、描述中的关键字搜索
-    info <包名>       查看单包详情(已装打开本地 README,未装打开 npm 页面)
-    stats             输出收录包时间、数量与最高版本
-
-  选项:
-    -r, --refresh     重新查询 npm 最新版本(忽略 1 小时缓存,仅对 pkgs 与 info 生效)
-
-  无参数、help、-h、--help 输出本帮助。`),
+  printHelp = () => {
+    const cmd = (name, desc) => `      ${chalk.cyanBright(name.padEnd(20))}${chalk.gray(desc)}`,
+      grp = name => `    ${chalk.cyan(name)}`;
+    console.log([
+      `  ${chalk.blueBright('用法:')} flun <命令> [选项]`, '',
+      grp('命令'),
+      cmd('pkgs', '列出全部包,按已装与未装分组'),
+      cmd('search <keyword>', '按包名或描述中的关键字搜索'),
+      cmd('info <name>', '查看单包详情;已装打开本地 README,未装打开 npm 页面'),
+      cmd('stats', '输出收录包时间、数量与最高版本'), '',
+      grp('选项'),
+      cmd('-r', '重新查询 npm 最新版本,忽略 1 小时缓存;仅对 pkgs 与 info 生效;完整写法 --refresh'), '',
+      `  ${chalk.gray('无参数、help、-h、--help 输出本帮助;')}`
+    ].join('\n'));
+  },
   printList = async refresh => {
     const rows = list(), { data: latest, online } = await resolveLatest(rows.map(r => r.name), refresh),
       width = Math.max(...rows.map(r => r.name.length)), groups = [[], []];
@@ -132,7 +135,7 @@ const GOLD = '#B8860B',
   },
   checkSelfUpdate = async refresh => {
     try {
-      const self = JSON.parse(fs.readFileSync(new URL('./package.json', import.meta.url), 'utf8')).version,
+      const self = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version,
         M = '@flun/flun', { data, online } = await resolveLatest([M], refresh), latest = data[M];
       if (!online || !latest || latest === self) return;
       const x = latest.split('.').map(Number), y = self.split('.').map(Number);

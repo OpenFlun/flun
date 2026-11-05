@@ -9,7 +9,7 @@
   },
   "main": "index.js",
   "bin": {
-    "flun": "cli.js"
+    "flun": "bin/cli.js"
   },
   "scripts": {
     "build:index": "node scripts/build-index.js"
@@ -25,15 +25,15 @@
     "cli"
   ],
   "files": [
-    "cli.js",
+    "bin/",
     "flun.js",
-    "index.d.ts",
     "index.js",
     "net.js",
-    "LICENSE",
+    "index.d.ts",
     "packages.json",
     "CHANGELOG.md",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "author": "flun <open@flun.top>",
   "dependencies": {

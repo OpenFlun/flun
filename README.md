@@ -28,16 +28,17 @@ Flun 生态包索引:列出全部官方包、查看用途与安装命令、一�
 
 ```
 @flun/flun/
-├── CHANGELOG.md   更新日志
-├── cli.js         命令行入口(bin: flun)
-├── flun.js        list / info / search / stats 四个函数
-├── index.d.ts     类型声明
-├── index.js       库入口,转发 flun.js 的导出
-├── LICENSE        许可
-├── net.js         联网查询最新版本与本地缓存
-├── package.json   包配置
-├── packages.json  包清单数据
-└── README.md      本文件
+├── bin/
+│   └── cli.js       命令行入口(bin: flun)
+├── flun.js          list / info / search / stats 四个函数
+├── index.js         库入口,转发 flun.js 的导出
+├── net.js           联网查询最新版本与本地缓存
+├── index.d.ts       类型声明
+├── packages.json    包清单数据
+├── CHANGELOG.md     更新日志
+├── README.md        本文件
+├── package.json     包配置
+└── LICENSE          许可
 ```
 
 ---
@@ -63,14 +64,10 @@ Flun 生态包索引:列出全部官方包、查看用途与安装命令、一�
 
 ## 安装
 
-项目内安装(作为开发工具):
 ```sh
-npm i -D @flun/flun
-```
+npm i -D @flun/flun # 项目内安装(作为开发工具)
 
-全局安装(建议):
-```sh
-npm i -g @flun/flun # 之后使用 `flun` 查看用法
+npm i -g @flun/flun # 全局安装(建议);之后使用 `flun` 查看用法
 
 ```
 
